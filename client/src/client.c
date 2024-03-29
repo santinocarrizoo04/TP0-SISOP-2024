@@ -40,7 +40,7 @@ int main(void)
 	conexion = crear_conexion(ip, puerto);
 
 	// Enviamos al servidor el valor de CLAVE como mensaje
-	enviar_mensaje(valor, conexion;)
+	enviar_mensaje(valor, conexion);
 	// Armamos y enviamos el paquete
 	paquete(conexion);
 
@@ -93,10 +93,10 @@ void paquete(int conexion)
 	t_paquete* paquete = crear_paquete();
 
 	// Leemos y esta vez agregamos las lineas al paquete
-	leido = readline("> ")
+	leido = readline("> ");
 	while(!string_is_empty(leido)){
 		agregar_a_paquete(paquete, leido, strlen(leido) + 1);
-		leido = readline("> ")
+		leido = readline("> ");
 	}
 
 	enviar_paquete(paquete, conexion);
