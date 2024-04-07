@@ -31,18 +31,25 @@ int main(void)
 	/* --------------- LEER DE CONSOLA ---------------- */
 
 	leer_consola(logger);
+	log_info(logger, "Terminado de leer de consola!");
 
 	/*---------------------------------------------------PARTE 3-------------------------------------------------------------*/
 
 	// ADVERTENCIA: Antes de continuar, tenemos que asegurarnos que el servidor esté corriendo para poder conectarnos a él
 
+	log_info(logger, "Vamos a crear una conexion hacia el servidor...");
+
 	// Creamos una conexión hacia el servidor
 	conexion = crear_conexion(ip, puerto);
 
+	log_info(logger, "Conexion creada!, enciamos al servidor el valor de CLAVE como msj...");
 	// Enviamos al servidor el valor de CLAVE como mensaje
-	enviar_mensaje(valor, conexion;)
+	enviar_mensaje(valor, conexion);
 	// Armamos y enviamos el paquete
+	log_info(logger, "Ahora armemos y enviemos un paquete!");
 	paquete(conexion);
+
+	log_info(logger, "FIN!");
 
 	terminar_programa(conexion, logger, config);
 
