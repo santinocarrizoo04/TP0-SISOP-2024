@@ -26,7 +26,7 @@ int crear_conexion(char *ip, char* puerto, t_log* logger)
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_flags = AI_PASSIVE;
 
-	getaddrinfo("192.168.1.38", "9845", &hints, &server_info);
+	getaddrinfo(ip, puerto, &hints, &server_info);
 
 	// Ahora vamos a crear el socket.
 	int socket_cliente = 0;

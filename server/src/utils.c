@@ -14,14 +14,22 @@ int iniciar_servidor(void)
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_flags = AI_PASSIVE;
 
-	getaddrinfo(NULL, PUERTO, &hints, &servinfo);
+	getaddrinfo("127.0.0.1", PUERTO, &hints, &servinfo);
 
 	// Creamos el socket de escucha del servidor
 	socket_servidor = socket(servinfo->ai_family, servinfo->ai_socktype, servinfo ->ai_protocol);
+	if(socket_servidor == -1){
+		printf("Error al crear elk socketg del servidor!!!");
+		exit(1);
+	}
 	// Asociamos el socket a un puerto
 	bind(socket_servidor, servinfo->ai_addr, servinfo->ai_addrlen);
 	// Escuchamos las conexiones entrantes
 	listen(socket_servidor, SOMAXCONN);
+	if(listen_resul == -1){
+		printf("Error en el LISTEN");
+		exit(1);
+	}
 
 	freeaddrinfo(servinfo);
 	log_trace(logger, "Listo para escuchar a mi cliente");
