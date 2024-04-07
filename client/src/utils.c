@@ -41,6 +41,8 @@ int crear_conexion(char *ip, char* puerto, t_log* logger)
 	int conexion_resul = 0;
 	conexion_resul = connect(socket_cliente, server_info->ai_addr, server_info->ai_addrlen);
 
+	log_info(logger, "El valor de la conexion es: %d", conexion_resul);
+
 	// Ahora que tenemos el socket, vamos a conectarlo
 	if(conexion_resul == -1){
 		log_info(logger, "No se conecto correctamente al server");
