@@ -33,13 +33,13 @@ int crear_conexion(char *ip, char* puerto, t_log* logger)
 	socket_cliente = socket(server_info->ai_family, server_info->ai_addr, server_info->ai_addrlen);
 
 	if(socket_cliente == -1){
-		log_info(logger, "No se creo el socket correctamente")
+		log_info(logger, "No se creo el socket correctamente");
 		exit(1);
 	}
 
 	// Ahora que tenemos el socket, vamos a conectarlo
 	if(connect(socket_cliente, server_info->ai_addr, server_info->ai_addrlen) == -1){
-		log_info(logger, "No se conecto correctamente al server")
+		log_info(logger, "No se conecto correctamente al server");
 		exit(1);
 	}
 
