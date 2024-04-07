@@ -26,19 +26,22 @@ int crear_conexion(char *ip, char* puerto, t_log* logger)
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_flags = AI_PASSIVE;
 
-	getaddrinfo(ip, puerto, &hints, &server_info);
+	getaddrinfo("192.168.1.38", "9845", &hints, &server_info);
 
 	// Ahora vamos a crear el socket.
 	int socket_cliente = 0;
-	socket_cliente = socket(server_info->ai_family, server_info->ai_addr, server_info->ai_addrlen);
+	socket_cliente = socket(server_info->ai_family, server_info->ai_socktype, server_info->ai_protocol);
 
 	if(socket_cliente == -1){
 		log_info(logger, "No se creo el socket correctamente");
 		exit(1);
 	}
 
+	int conexion_resul = 0;
+	conexion_resul = connect(socket_cliente, server_info->ai_addr, server_info->ai_addrlen);
+
 	// Ahora que tenemos el socket, vamos a conectarlo
-	if(connect(socket_cliente, server_info->ai_addr, server_info->ai_addrlen) == -1){
+	if(conexion_resul == -1){
 		log_info(logger, "No se conecto correctamente al server");
 		exit(1);
 	}
