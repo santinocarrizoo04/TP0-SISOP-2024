@@ -36,6 +36,7 @@ int crear_conexion(char *ip, char* puerto, t_log* logger)
 		log_info(logger, "No se creo el socket correctamente");
 		exit(1);
 	}
+	log_info(logger, "El valor del socket es: %d", socket_cliente);
 
 	int conexion_resul = 0;
 	conexion_resul = connect(socket_cliente, server_info->ai_addr, server_info->ai_addrlen);
