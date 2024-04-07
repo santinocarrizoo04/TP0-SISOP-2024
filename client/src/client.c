@@ -40,9 +40,9 @@ int main(void)
 	log_info(logger, "Vamos a crear una conexion hacia el servidor...");
 
 	// Creamos una conexión hacia el servidor
-	conexion = crear_conexion(ip, puerto);
+	conexion = crear_conexion(ip, puerto, logger);
 
-	log_info(logger, "Conexion creada!, enciamos al servidor el valor de CLAVE como msj...");
+	log_info(logger, "Conexion creada!, enviamos al servidor el valor de CLAVE como msj...");
 	// Enviamos al servidor el valor de CLAVE como mensaje
 	enviar_mensaje(valor, conexion);
 	// Armamos y enviamos el paquete
@@ -53,8 +53,6 @@ int main(void)
 
 	terminar_programa(conexion, logger, config);
 
-	/*---------------------------------------------------PARTE 5-------------------------------------------------------------*/
-	// Proximamente
 }
 
 t_log* iniciar_logger(void)
