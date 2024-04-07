@@ -25,7 +25,7 @@ int iniciar_servidor(void)
 	// Asociamos el socket a un puerto
 	bind(socket_servidor, servinfo->ai_addr, servinfo->ai_addrlen);
 	// Escuchamos las conexiones entrantes
-	listen(socket_servidor, SOMAXCONN);
+	int listen_resul = listen(socket_servidor, SOMAXCONN);
 	if(listen_resul == -1){
 		printf("Error en el LISTEN");
 		exit(1);
