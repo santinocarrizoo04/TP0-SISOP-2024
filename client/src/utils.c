@@ -38,7 +38,10 @@ int crear_conexion(char *ip, char* puerto, t_log* logger)
 	}
 
 	// Ahora que tenemos el socket, vamos a conectarlo
-	connect(socket_cliente, server_info->ai_addr, server_info->ai_addrlen);
+	if(connect(socket_cliente, server_info->ai_addr, server_info->ai_addrlen) == -1){
+		log_info(logger, "No se conecto correctamente al server")
+		exit(1);
+	}
 
 	freeaddrinfo(server_info);
 
